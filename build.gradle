@@ -56,7 +56,8 @@ dependencies {
             'org.slf4j:slf4j-api',
             'org.springframework:spring-aspects',
             'org.springframework:spring-context-support',
-            'org.springframework:spring-webmvc',
+            'org.springframework:spring-webmvc'
+            ''org.springframework.boot:spring-boot-starter-web'',
     )
     providedCompile(
             'javax.servlet:javax.servlet-api'
