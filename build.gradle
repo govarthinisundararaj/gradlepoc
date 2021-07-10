@@ -57,7 +57,7 @@ dependencies {
             'org.springframework:spring-aspects',
             'org.springframework:spring-context-support',
             'org.springframework:spring-webmvc'
-            ''org.springframework.boot:spring-boot-starter-web'',
+            'org.springframework.boot:spring-boot-starter-web',
     )
     providedCompile(
             'javax.servlet:javax.servlet-api'
