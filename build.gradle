@@ -5,24 +5,27 @@ buildscript {
     dependencies {
         classpath(
                 'io.spring.gradle:dependency-management-plugin:1.0.0.RELEASE',
-                'org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:1.2.0',
+                'org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:2.1.1',
                 'org.akhikhl.gretty:gretty:+'
         )
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'war'
-apply plugin: 'io.spring.dependency-management'
-apply plugin: 'org.unbroken-dome.test-sets'
-apply plugin: 'org.akhikhl.gretty'
+//apply plugin: 'java'
+//apply plugin: 'war'
+//apply plugin: 'io.spring.dependency-management'
+//apply plugin: 'org.unbroken-dome.test-sets' version "1.2.0"
+//apply plugin: 'org.akhikhl.gretty'
 
 //If you are using Gradle 2.1+, you can use the new Plugins DSL. The
 //following snippet replaces every line above this comment:
-/*plugins {
+plugins {
     id 'java'
-    id 'org.unbroken-dome.test-sets' version '1.2.0'
-}*/
+    id 'war'
+    id 'io.spring.dependency-management'  version '1.0.8.RELEASE'
+    id 'org.akhikhl.gretty' version "2.0.0"
+    id 'org.unbroken-dome.test-sets' version '2.1.1'
+}
 
 
 testSets {
@@ -40,7 +43,7 @@ tasks.withType(Test) {
 }
 
 gretty {
-    httpPort = 8080
+    httpPort = 8070
     contextPath = '/'
     servletContainer = 'jetty9.3'
     integrationTestTask = 'endToEndTest'
@@ -66,13 +69,13 @@ dependencies {
     providedCompile(
             'javax.servlet:javax.servlet-api'
     )
-    runtime(
+    implementation(
             'javax.servlet:jstl',
             'log4j:log4j',
             'org.slf4j:slf4j-log4j12',
             'org.slf4j:jcl-over-slf4j',
     )
-    testCompile(
+    testImplementation(
             'javax.el:javax.el-api',
             'org.glassfish.web:el-impl:2.2',
             'junit:junit',
