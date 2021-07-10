@@ -28,19 +28,11 @@ plugins {
 }
 
 
-testSets {
-    integrationTest { dirName = 'integration-test' }
-    endToEndTest { dirName = 'end-to-end-test' }
-}
 
-check.dependsOn integrationTest
-check.dependsOn endToEndTest
-endToEndTest.mustRunAfter integrationTest
-integrationTest.mustRunAfter test
 
-tasks.withType(Test) {
-    reports.html.destination = file("${reporting.baseDir}/${name}")
-}
+
+
+
 
 gretty {
     httpPort = 8070
@@ -84,9 +76,7 @@ dependencies {
             'org.assertj:assertj-core:3.5.2',
             'org.springframework:spring-test'
     )
-    endToEndTestCompile(
-            'org.seleniumhq.selenium:selenium-java:3.1.0'
-    )
+    
 }
 
 test {
@@ -98,20 +88,4 @@ test {
     }
 }
 
-integrationTest {
-    useJUnit {
-        includeCategories 'com.testwithspring.intermediate.IntegrationTest'
-    }
-    testLogging {
-        showStandardStreams = true
-    }
-}
 
-endToEndTest {
-    useJUnit {
-        includeCategories 'com.testwithspring.intermediate.EndToEndTest'
-    }
-    testLogging {
-        showStandardStreams = true
-    }
-}
