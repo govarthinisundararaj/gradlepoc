@@ -2,6 +2,13 @@ buildscript {
     repositories {
         jcenter()
     }
+     configurations {
+        classpath {
+            exclude group: 'ch.qos.logback', module: 'logback-classic'
+            // OR
+            exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        }
+    }
     dependencies {
         classpath(
                 'io.spring.gradle:dependency-management-plugin:1.0.0.RELEASE',
